@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     
@@ -16,9 +17,9 @@ struct ContentView: View {
     @State var currentSelection = APType.all
     
     var filteredDinos: [ApexPredatorModel] {
-        predators.sort(by: alphabetical)
         predators.filter(by: currentSelection)
-        
+        predators.sort(by: alphabetical)
+                
         return predators.search(for: searchText)
     }
     
@@ -29,11 +30,11 @@ struct ContentView: View {
             List(filteredDinos) { predator in
                 
                 NavigationLink {
-                    
-                    Image(predator.image)
-                        .resizable()
-                        .scaledToFit()
-                    
+                    PredatorDetail(predator: predator, position: .camera(
+                        MapCamera(
+                            centerCoordinate: predator.location,
+                            distance: 30000
+                        )))                    
                 } label: {
                     
                     HStack {
