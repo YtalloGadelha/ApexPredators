@@ -19,7 +19,7 @@ struct ContentView: View {
     var filteredDinos: [ApexPredatorModel] {
         predators.filter(by: currentSelection)
         predators.sort(by: alphabetical)
-                
+        
         return predators.search(for: searchText)
     }
     
@@ -34,11 +34,10 @@ struct ContentView: View {
                         MapCamera(
                             centerCoordinate: predator.location,
                             distance: 30000
-                        )))                    
+                        )))
                 } label: {
                     
                     HStack {
-                        
                         // Dinosaur image
                         Image(predator.image)
                             .resizable()
@@ -69,17 +68,14 @@ struct ContentView: View {
             .animation(.default, value: searchText)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    
                     Button {
                         alphabetical.toggle()
-                    } label: {                        
+                    } label: {
                         Image(systemName: alphabetical ? "film" : "textformat")
                             .symbolEffect(.bounce, value: alphabetical)
                     }
-                    
                 }
                 ToolbarItem(placement: .topBarTrailing){
-                    
                     Menu {
                         Picker("Filter", selection: $currentSelection.animation()) {
                             ForEach(APType.allCases) { type in
@@ -89,13 +85,10 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "slider.horizontal.3")
                     }
-                    
-                    
                 }
             }
         }
         .preferredColorScheme(.dark)
-        
     }
 }
 

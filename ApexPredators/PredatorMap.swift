@@ -19,7 +19,6 @@ struct PredatorMap: View {
         Map(position: $position) {
             
             ForEach(predators.apexPredators) { predator in
-                
                 Annotation(predator.name, coordinate: predator.location) {
                     Image(predator.image)
                         .resizable()
@@ -28,7 +27,6 @@ struct PredatorMap: View {
                         .shadow(color: .white, radius: 3)
                         .scaleEffect(x: -1)
                 }
-                
             }
             
         }

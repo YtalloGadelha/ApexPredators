@@ -15,7 +15,7 @@ class Predators {
     init() {
         decodeApexPredatorData()
     }
-
+    
     func decodeApexPredatorData() {
         
         if let url = Bundle.main.url(forResource: "jpapexpredators", withExtension: "json") {
@@ -32,7 +32,8 @@ class Predators {
             } catch {
                 print("Error decoding JSON data: \(error)")
             }
-         }
+        }
+        
     }
     
     func search(for searchTerm: String) -> [ApexPredatorModel] {

@@ -20,7 +20,6 @@ struct PredatorDetail: View {
         
         GeometryReader { geo in
             ScrollView {
-                
                 ZStack(alignment: .bottomTrailing) {
                     // Backgroud image
                     Image(predator.type.rawValue)
@@ -30,10 +29,10 @@ struct PredatorDetail: View {
                             LinearGradient(stops: [
                                 Gradient.Stop(color: .clear, location: 0),
                                 Gradient.Stop(color: .black, location: 0.8)
-                                ],
+                            ],
                                 startPoint: .top, endPoint: .bottom)
-                        
-                    }
+                            
+                        }
                     
                     // Dino image
                     Image(predator.image)
@@ -42,7 +41,7 @@ struct PredatorDetail: View {
                         .frame(width: geo.size.width/1.5, height: geo.size.height/3.7)
                         .scaleEffect(x: -1)
                         .shadow(color: .black, radius: 7)
-                        .offset(y: 40)
+                        .offset(y:20)
                 }
                 
                 VStack(alignment: .leading) {
@@ -54,10 +53,10 @@ struct PredatorDetail: View {
                     NavigationLink {
                         PredatorMap(position:
                                 .camera(MapCamera(
-                            centerCoordinate: predator.location,
-                            distance: 1000,
-                            heading: 250,
-                            pitch: 80))
+                                    centerCoordinate: predator.location,
+                                    distance: 1000,
+                                    heading: 250,
+                                    pitch: 80))
                         )
                         .navigationTransition(.zoom(sourceID: 1, in: namespace))
                     } label: {
